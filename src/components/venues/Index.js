@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Input from '../input/Index';
 
 class Venues extends Component {
   constructor(props) {
@@ -9,6 +10,8 @@ class Venues extends Component {
       latlong: '',
       venues: []
     };
+
+    this.getVenues = this.getVenues.bind(this);
   }
 
   componentDidMount() {
@@ -27,10 +30,11 @@ class Venues extends Component {
 
   getVenues(query) {
     const endpoint = 'https://api.foursquare.com/v2/venues/search?';
+    const { latlong } = this.state;
     const params = {
       client_id: 'VEBTNFOLQKAE4O4NJ0PUCY4DPOGMLLET0Q3AZVDAVVXXZE1D',
       client_secret: 'JPZGJN4ZUV5K21VOKKF1WADEH2BYS13SFKZ4LVA5FC2BUSVJ',
-      ll: this.state.latlong,
+      ll: latlong,
       query,
       limit: 10,
       v: '20180320'
@@ -49,6 +53,7 @@ class Venues extends Component {
     const { venues } = this.state;
     return (
       <div className="venue-container">
+        <Input getVenues={this.getVenues} placeholder="For example - taco" />
         <div className="venue-container__row">
           {
             venues.map((venue) => (
