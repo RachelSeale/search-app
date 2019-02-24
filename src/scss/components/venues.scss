@@ -1,0 +1,47 @@
+.venue-container {
+  margin: 0 auto;
+
+  &__row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
+
+  &__item {
+    position: relative;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+
+    &--text {
+      background: $secondary-color;
+      margin-top: -1.6rem;
+      padding: 1rem;
+      min-height: 18rem;
+      text-align: center;
+
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+
+      p {
+        span {
+          display: block;
+        }
+      }
+    }
+
+    @media(max-width: 1333px) {
+      flex-basis: 33%;
+    }
+
+    @media(max-width: 815px) {
+      flex-basis: 50%;
+    }
+
+    @media(max-width: 555px) {
+      flex-basis: 100%;
+    }
+  }
+}
